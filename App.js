@@ -5,7 +5,8 @@ import { StatsigClient } from "@statsig/js-client";
 import {
   StatsigProviderRN,
   useExperiment,
-  useStatsigClient, // StatsigProvider specifically for RN
+  useStatsigClient,
+  useStatsigUser, // StatsigProvider specifically for RN
   warmCachingFromAsyncStorage,
 } from "@statsig/react-native-bindings";
 
@@ -46,12 +47,12 @@ function ExperimentCheck() {
 }
 
 function UpdateUserButton({ setIsLoading }) {
-  const { client } = useStatsigClient();
+  const { updateUserAsync } = useStatsigUser();
 
   const handleLogin = async () => {
     setIsLoading(true);
     const userInfo = await getStatsigUser();
-    await client.updateUserAsync(userInfo).catch((err) => console.error(err));
+    await updateUserAsync(userInfo).catch((err) => console.error(err));
     setIsLoading(false);
   };
 
