@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 
@@ -13,7 +12,7 @@ import {
 const INIT_STATSIG_USER = {
   appVersion: "1.2.3",
   country: "AE",
-  userID: "null",
+  userID: "null", // Specifically overridden into 'Control'
 };
 
 const STATSIG_OPTIONS = {
